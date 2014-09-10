@@ -1,4 +1,4 @@
-package com.android.curso.checkthenews;
+package capturaweb.com.android.ui;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -15,6 +15,9 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Intent;
+import capturaweb.com.android.capturaweb.R;
+
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,7 +45,7 @@ public class mainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_activity_actionbar, menu);
         return true;
     }
 
@@ -51,9 +54,13 @@ public class mainActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_capure:
+                openViewImage();
+                return true;
+            case R.id.action_favorite:
+                openFavorite();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -114,5 +121,15 @@ public class mainActivity extends Activity {
 
     public void closeImg(View view) {
         mImageView.setImageBitmap(null);
+    }
+
+    private void openFavorite() {
+        /*Intent intent = new Intent(this, FavoriteListActivity.class);
+        this.startActivity(intent);*/
+    }
+
+    private void openViewImage() {
+        Intent intent = new Intent(this, view_image_activity.class);
+        this.startActivity(intent);
     }
 }

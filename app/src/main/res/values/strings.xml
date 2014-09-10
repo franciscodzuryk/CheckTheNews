@@ -9,4 +9,18 @@
     <string name="buttonText">GO</string>
     <string name="hint"></string>
 
+    <!-- Main Activity -->
+    <string name="edit_text_url">Escribir url a visitar ...</string>
+    <string name="button_search">Visitar</string>
+    <string name="action_capure">Capturar Web</string>
+    <string name="action_favorite">Favoritos </string>
+    <string name="textView_Favorite">No hay elementos para mostrar </string>
+    <string name="textView_image_titulo">Titulo de la imagen </string>
+    <string name="textView_image_descrip">Descripcion de la imagen </string>
+    <string name="title_activity_view_image_activity">view_image_activity</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- View Image Activity -->
+    <string name="imageview_capture">Imagen tomada</string>
+
 </resources>
