@@ -23,7 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class mainActivity extends Activity {
+public class MainActivity extends Activity {
     public int imgID;
 
     //views
@@ -124,8 +124,8 @@ public class mainActivity extends Activity {
     }
 
     private void openFavorite() {
-        /*Intent intent = new Intent(this, FavoriteListActivity.class);
-        this.startActivity(intent);*/
+        Intent intent = new Intent(this, FavoriteListActivity.class);
+        this.startActivity(intent);
     }
 
     private void openViewImage() {

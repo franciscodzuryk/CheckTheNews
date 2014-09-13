@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="capturaweb.com.android.ui.SearchFragment"
+    android:background="#ff9ba09f">
+
+
+    <EditText
+        android:id="@+id/edit_text_url"
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_text_url"
+        android:inputType="none" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:drawableBottom="@drawable/ic_action_search"
+        android:id="@+id/button"
+        android:clickable="true"
+        android:layout_gravity="right|top"
+        android:background="#ffff0005" />
+
+    >
+
+</FrameLayout>
