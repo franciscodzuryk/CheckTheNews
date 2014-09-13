@@ -39,7 +39,7 @@ public class FavoriteListActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.favorite, menu);
+        getMenuInflater().inflate(R.menu.favorite_actionbar, menu);
         return true;
     }
 
