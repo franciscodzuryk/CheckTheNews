@@ -30,7 +30,9 @@ public class MainActivity extends Activity {
     public TextView mTextView;
     public EditText mEditText;
     public WebView mWebView;
-    public ImageView mImageView;
+
+    /*public ImageView mImageView;*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         //mTextView = (TextView) findViewById(R.id.mTextView);
         mEditText = (EditText) findViewById(R.id.mEditText);
-        mWebView = (WebView) findViewById(R.id.mWebView);
-        mWebView.setWebViewClient(new WebViewClient());
+       /* mWebView = (WebView) findViewById(R.id.mWebView);
+        mWebView.setWebViewClient(new WebViewClient());*/
     }
 
     @Override
@@ -54,14 +56,14 @@ public class MainActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
+       /* switch (item.getItemId()) {
             case R.id.action_capure:
                 openViewImage();
                 return true;
             case R.id.action_favorite:
                 openFavorite();
                 return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -83,28 +85,14 @@ public class MainActivity extends Activity {
         return false;
     }
 
-    public void getBitmap() {
-        mWebView.layout(0, 0, 500, 500);
-        Bitmap bm = Bitmap.createBitmap(500, 500, Bitmap.Config.ARGB_8888);
+    public void getBitmap(WebView view) {
+        Bitmap bm = Bitmap.createBitmap(view.getWidth(), view.getContentHeight(), Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bm);
-        mWebView.draw(c);
+        view.draw(c);
         c.drawBitmap(bm, 0, 0, null);
-        mImageView = (ImageView) findViewById(R.id.mImageView);
-        mImageView.setImageBitmap(bm);/*
-        if (isExternalStorageWritable()) {
-            OutputStream stream = null;
-            try {
-                stream = new FileOutputStream(Environment.getExternalStorageDirectory()+"/Pictures"+imgID+".png");
-                bm.compress(Bitmap.CompressFormat.PNG, 80, stream);
-                if (stream != null) {
-                    stream.close();
-                    imgID++;
-                }
-            } catch (IOException e) {
-            } finally {
-                bm.recycle();
-            }
-        }*/
+        openViewImage(bm);
+       /* mImageView = (ImageView) findViewById(R.id.mImageView);
+        mImageView.setImageBitmap(bm);*/
     }
 
     public void cargarURL(View view) {
@@ -114,13 +102,13 @@ public class MainActivity extends Activity {
         mWebView.setWebViewClient(new WebViewClient() {
 
             public void onPageFinished(WebView view, String url) {
-                getBitmap();
+                getBitmap(view);
             }
         });
     }
 
     public void closeImg(View view) {
-        mImageView.setImageBitmap(null);
+        /*mImageView.setImageBitmap(null);*/
     }
 
     private void openFavorite() {
@@ -128,8 +116,9 @@ public class MainActivity extends Activity {
         this.startActivity(intent);
     }
 
-    private void openViewImage() {
+    private void openViewImage(Bitmap webImage) {
         Intent intent = new Intent(this, view_image_activity.class);
+        intent.putExtra("webImage", webImage);
         this.startActivity(intent);
     }
 }

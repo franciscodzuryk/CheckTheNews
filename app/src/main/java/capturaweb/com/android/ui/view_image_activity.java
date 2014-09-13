@@ -1,9 +1,13 @@
 package capturaweb.com.android.ui;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
 import capturaweb.com.android.capturaweb.R;
 
 
@@ -16,6 +20,10 @@ public class view_image_activity extends Activity {
         setContentView(R.layout.view_image_activity);
         // Habilitar el UpButton
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent intent = getIntent();
+        Bitmap webImage = (Bitmap) intent.getParcelableExtra("webImage");
+        ImageView view = (ImageView)findViewById(R.id.imageView);
+        view.setImageBitmap(webImage);
     }
 
 
