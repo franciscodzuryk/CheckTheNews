@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="capturaweb.com.android.ui.view_image_activity"
+            android:name="capturaweb.com.android.ui.ViewImage"
             android:label="@string/title_activity_view_image_activity" >
         </activity>
         <activity

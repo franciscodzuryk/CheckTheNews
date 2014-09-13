@@ -17,10 +17,11 @@
     <string name="textView_Favorite">No hay elementos para mostrar </string>
     <string name="textView_image_titulo">Titulo de la imagen </string>
     <string name="textView_image_descrip">Descripcion de la imagen </string>
-    <string name="title_activity_view_image_activity">view_image_activity</string>
+    <string name="title_activity_view_image_activity">Imagen tomada</string>
     <string name="hello_world">Hello world!</string>
 
     <!-- View Image Activity -->
     <string name="imageview_capture">Imagen tomada</string>
+    <string name="action_facebook">Compartir</string>
 
 </resources>

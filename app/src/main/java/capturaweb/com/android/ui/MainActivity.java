@@ -18,11 +18,6 @@ import android.widget.TextView;
 import android.content.Intent;
 import capturaweb.com.android.capturaweb.R;
 
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 public class MainActivity extends Activity {
     public int imgID;
 
@@ -129,7 +124,7 @@ public class MainActivity extends Activity {
     }
 
     private void openViewImage() {
-        Intent intent = new Intent(this, view_image_activity.class);
+        Intent intent = new Intent(this, ViewImage.class);
         this.startActivity(intent);
     }
 }
