@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\Users\fdzuryk\AndroidstudioProjects\Simple Facebook\simpleFacebook\src\main\assets" />
+        <source path="C:\workspace\CheckTheNews\simpleFacebook\src\main\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\fdzuryk\AndroidstudioProjects\Simple Facebook\simpleFacebook\src\debug\assets" />
+        <source path="C:\workspace\CheckTheNews\simpleFacebook\src\debug\assets" />
     </dataSet>
 
 </merger>

@@ -2,13 +2,13 @@
 <merger version="2" >
 
     <dataSet config="unspecified" >
-        <source path="C:\Users\fdzuryk\AndroidstudioProjects\Simple Facebook\simpleFacebook\build\intermediates\exploded-aar\Simple Facebook\facebookSDK\unspecified\assets" />
+        <source path="C:\workspace\CheckTheNews\simpleFacebook\build\intermediates\exploded-aar\CheckTheNews\facebookSDK\unspecified\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\fdzuryk\AndroidstudioProjects\Simple Facebook\simpleFacebook\build\intermediates\bundles\debug\assets" />
+        <source path="C:\workspace\CheckTheNews\simpleFacebook\build\intermediates\bundles\debug\assets" />
     </dataSet>
     <dataSet config="main" >
-        <source path="C:\Users\fdzuryk\AndroidstudioProjects\Simple Facebook\simpleFacebook\src\androidTest\assets" />
+        <source path="C:\workspace\CheckTheNews\simpleFacebook\src\androidTest\assets" />
     </dataSet>
 
 </merger>
