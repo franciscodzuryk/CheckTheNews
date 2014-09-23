@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\workspace\CheckTheNews\facebookSDK\src\main\assets" />
+        <source path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\facebookSDK\src\main\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\workspace\CheckTheNews\facebookSDK\src\debug\assets" />
+        <source path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\facebookSDK\src\debug\assets" />
     </dataSet>
 
 </merger>

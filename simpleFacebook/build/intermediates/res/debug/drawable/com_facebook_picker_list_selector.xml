@@ -25,4 +25,4 @@
     <item android:state_focused="true"                                                             android:drawable="@drawable/com_facebook_picker_list_focused" />
 
 </selector>
-<!-- From: file:/C:/workspace/CheckTheNews/facebookSDK/src/main/res/drawable/com_facebook_picker_list_selector.xml --><!-- From: file:/C:/workspace/CheckTheNews/simpleFacebook/build/intermediates/exploded-aar/CheckTheNews/facebookSDK/unspecified/res/drawable/com_facebook_picker_list_selector.xml -->
+<!-- From: file:/C:/Users/jas/AndroidStudioProjects/check/CheckTheNews/facebookSDK/src/main/res/drawable/com_facebook_picker_list_selector.xml --><!-- From: file:/C:/Users/jas/AndroidStudioProjects/check/CheckTheNews/simpleFacebook/build/intermediates/exploded-aar/CheckTheNews/facebookSDK/unspecified/res/drawable/com_facebook_picker_list_selector.xml -->

@@ -21,6 +21,9 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- View Image Activity -->
+    <string name="app_id"></string>
     <string name="imageview_capture">Imagen tomada</string>
+    <string name="title_activity_login_fb">Login Facebook</string>
+    <string name="loginFB">Login</string>
 
 </resources>
