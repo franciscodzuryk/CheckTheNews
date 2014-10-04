@@ -3,21 +3,25 @@ package capturaweb.com.android.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.SimpleFacebookConfiguration;
 import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.utils.Logger;
 
 import capturaweb.com.android.capturaweb.R;
 
-public class LoginFB extends Activity {
+public class LoginFB extends FragmentActivity {
 
     protected SimpleFacebook mSimpleFacebook;
+    public TextView mTextView;
     protected String TAG = "TAG";
 
     @Override
@@ -36,6 +40,8 @@ public class LoginFB extends Activity {
                 .setNamespace("checkthenews")
                 .setPermissions(permissions)
                 .build();
+
+        Logger.DEBUG = true;
 
         SimpleFacebook.setConfiguration(configuration);
     }
@@ -75,13 +81,13 @@ public class LoginFB extends Activity {
         @Override
         public void onLogin() {
             // change the state of the button or do whatever you want
-            Log.i(TAG, "Logged in");
+            mTextView.setText("Logueado");
         }
 
         @Override
         public void onNotAcceptingPermissions(Permission.Type type) {
             // user didn't accept READ or WRITE permission
-            Log.w(TAG, String.format("You didn't accept %s permissions", type.name()));
+            mTextView.setText("You didn't accept %s permissions");
         }
 
         @Override

@@ -128,6 +128,11 @@ public class MainActivity extends Activity {
         this.startActivity(intent);
     }
 
+    public void openLogin(View view) {
+        Intent intent = new Intent(this, LoginFB.class);
+        this.startActivity(intent);
+    }
+
     private void openViewImage() {
         Intent intent = new Intent(this, view_image_activity.class);
         this.startActivity(intent);
