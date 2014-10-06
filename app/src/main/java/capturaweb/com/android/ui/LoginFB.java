@@ -2,8 +2,13 @@ package capturaweb.com.android.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,18 +21,42 @@ import com.sromku.simple.fb.SimpleFacebookConfiguration;
 import com.sromku.simple.fb.listeners.OnLoginListener;
 import com.sromku.simple.fb.utils.Logger;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import capturaweb.com.android.capturaweb.R;
 
 public class LoginFB extends FragmentActivity {
 
     protected SimpleFacebook mSimpleFacebook;
     public TextView mTextView;
-    protected String TAG = "TAG";
+    protected String app_id = "1482662632002146";
+    protected String app_namespace = "checkthenews_nsp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_fb);
+
+        /** Log de Key Hash **/
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("capturaweb.com.android.capturaweb", PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                //String something = new String(Base64.encodeBytes(md.digest()));
+                Log.e("hash key", something);
+            }
+        } catch (PackageManager.NameNotFoundException e1) {
+            Log.e("name not found", e1.toString());
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("no such an algorithm", e.toString());
+        } catch (Exception e) {
+            Log.e("exception", e.toString());
+        }
+        /** Log de Key Hash **/
 
         Permission[] permissions = new Permission[] {
                 Permission.USER_PHOTOS,
@@ -36,12 +65,10 @@ public class LoginFB extends FragmentActivity {
         };
 
         SimpleFacebookConfiguration configuration = new SimpleFacebookConfiguration.Builder()
-                .setAppId(String.valueOf(R.string.app_id))
-                .setNamespace("checkthenews")
+                .setAppId(app_id)
+                .setNamespace(app_namespace)
                 .setPermissions(permissions)
                 .build();
-
-        Logger.DEBUG = true;
 
         SimpleFacebook.setConfiguration(configuration);
     }
@@ -81,13 +108,13 @@ public class LoginFB extends FragmentActivity {
         @Override
         public void onLogin() {
             // change the state of the button or do whatever you want
-            mTextView.setText("Logueado");
+            Log.i("asd", "Logged in");
         }
 
         @Override
         public void onNotAcceptingPermissions(Permission.Type type) {
             // user didn't accept READ or WRITE permission
-            mTextView.setText("You didn't accept %s permissions");
+            Log.i("asd", "You didn't accept permissions");
         }
 
         @Override

@@ -2,19 +2,19 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\simpleFacebook\src\main\res" >
+        <source path="C:\Users\gthea\aproj\check\CheckTheNews\simpleFacebook\src\main\res" >
             <file
-                path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\simpleFacebook\src\main\res\values\strings.xml"
+                path="C:\Users\gthea\aproj\check\CheckTheNews\simpleFacebook\src\main\res\values\strings.xml"
                 qualifiers="" >
                 <string name="app_name" >Simple Facebook
                 </string>
             </file>
         </source>
-        <source path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\simpleFacebook\build\generated\res\rs\release" />
-        <source path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\simpleFacebook\build\generated\res\generated\release" />
+        <source path="C:\Users\gthea\aproj\check\CheckTheNews\simpleFacebook\build\generated\res\rs\release" />
+        <source path="C:\Users\gthea\aproj\check\CheckTheNews\simpleFacebook\build\generated\res\generated\release" />
     </dataSet>
     <dataSet config="release" >
-        <source path="C:\Users\jas\AndroidStudioProjects\check\CheckTheNews\simpleFacebook\src\release\res" />
+        <source path="C:\Users\gthea\aproj\check\CheckTheNews\simpleFacebook\src\release\res" />
     </dataSet>
 
 </merger>
