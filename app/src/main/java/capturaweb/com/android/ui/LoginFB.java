@@ -41,8 +41,8 @@ public class LoginFB extends FragmentActivity {
 
     protected SimpleFacebook mSimpleFacebook;
     public TextView mTextView;
-    protected String app_id = "1482662632002146";
-    protected String app_namespace = "checkthenews_nsp";
+    private static final String app_id = "1482662632002146";
+    private static final String app_namespace = "checkthenews_nsp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,11 @@ public class LoginFB extends FragmentActivity {
         mSimpleFacebook = SimpleFacebook.getInstance(this);
         /** Log de Key Hash **/
         try {
-            PackageInfo info = getPackageManager().getPackageInfo("capturaweb.com.android.capturaweb", PackageManager.GET_SIGNATURES);
+            PackageInfo info = getPackageManager()
+                .getPackageInfo(
+                        "capturaweb.com.android.capturaweb",
+                        PackageManager.GET_SIGNATURES
+                );
             for (Signature signature : info.signatures) {
                 MessageDigest md;
                 md = MessageDigest.getInstance("SHA");
@@ -115,6 +119,7 @@ public class LoginFB extends FragmentActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /** Login Listener **/
     OnLoginListener onLoginListener = new OnLoginListener() {
         @Override
         public void onLogin() {
@@ -139,6 +144,7 @@ public class LoginFB extends FragmentActivity {
         }
     };
 
+    /** Publish Listener **/
     OnPublishListener onPublishListener = new OnPublishListener() {
         @Override
         public void onComplete(String postId) {
@@ -154,6 +160,7 @@ public class LoginFB extends FragmentActivity {
         }
     };
 
+    /** Permission Listener **/
     OnNewPermissionsListener onNewPermissionsListener = new OnNewPermissionsListener() {
         @Override
         public void onSuccess(String accessToken) {
@@ -200,8 +207,6 @@ public class LoginFB extends FragmentActivity {
                 .setPicture("https://raw.github.com/sromku/android-simple-facebook/master/Refs/android_facebook_sdk_logo.png")
                 .setLink("https://github.com/sromku/android-simple-facebook")
                 .build();*/
-
-
         //publicacion de imagenes
         Bitmap imagen = BitmapFactory.decodeResource(getResources(), R.drawable.ic_image_test);
         Photo photo = new Photo.Builder()
