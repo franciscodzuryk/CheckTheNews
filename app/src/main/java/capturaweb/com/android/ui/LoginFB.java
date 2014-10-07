@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -18,11 +20,20 @@ import android.widget.TextView;
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.SimpleFacebookConfiguration;
+import com.sromku.simple.fb.entities.Feed;
+import com.sromku.simple.fb.entities.Photo;
+import com.sromku.simple.fb.entities.Score;
 import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.listeners.OnNewPermissionsListener;
+import com.sromku.simple.fb.listeners.OnPhotosListener;
+import com.sromku.simple.fb.listeners.OnPublishListener;
 import com.sromku.simple.fb.utils.Logger;
+
+import org.apache.http.ReasonPhraseCatalog;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import capturaweb.com.android.capturaweb.R;
 
@@ -37,7 +48,7 @@ public class LoginFB extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_fb);
-
+        mSimpleFacebook = SimpleFacebook.getInstance(this);
         /** Log de Key Hash **/
         try {
             PackageInfo info = getPackageManager().getPackageInfo("capturaweb.com.android.capturaweb", PackageManager.GET_SIGNATURES);
@@ -70,7 +81,7 @@ public class LoginFB extends FragmentActivity {
                 .setPermissions(permissions)
                 .build();
 
-        SimpleFacebook.setConfiguration(configuration);
+        mSimpleFacebook.setConfiguration(configuration);
     }
 
     @Override
@@ -128,7 +139,77 @@ public class LoginFB extends FragmentActivity {
         }
     };
 
+    OnPublishListener onPublishListener = new OnPublishListener() {
+        @Override
+        public void onComplete(String postId) {
+            Log.i("asd", "Published successfully. The new post id = " + postId);
+        }
+        @Override
+        public void onFail(String reason) {
+            Log.i("asd", "Not published because of " + reason);
+        }
+        @Override
+        public void onException(Throwable throwable) {
+            Log.i("asd", "excepcion "+throwable.getMessage());
+        }
+    };
+
+    OnNewPermissionsListener onNewPermissionsListener = new OnNewPermissionsListener() {
+        @Override
+        public void onSuccess(String accessToken) {
+            // updated access token
+        }
+
+        @Override
+        public void onNotAcceptingPermissions(Permission.Type type) {
+            // user didn't accept READ or WRITE permission
+            Log.w("asd", String.format("You didn't accept %s permissions", type.name()));
+        }
+        @Override
+        public void onThinking() {
+        }
+        @Override
+        public void onFail(String reason) {
+            Log.i("asd", "fail de permisos " + reason);
+        }
+        @Override
+        public void onException(Throwable throwable) {
+            Log.i("asd", "excepcion de permisos (?? "+throwable.getMessage());
+        }
+    };
+
     public void log(View view) {
         mSimpleFacebook.login(onLoginListener);
+    }
+
+    public void requestPermisos(View view) {
+        Permission[] permissions = new Permission[] {
+                Permission.PUBLISH_ACTION
+        };
+        boolean showPublish = true;
+        mSimpleFacebook.requestNewPermissions(permissions, showPublish, onNewPermissionsListener);
+    }
+
+    public void pruebaPost(View view) {
+        /*
+        Feed feed = new Feed.Builder()
+                .setMessage("Clone it out...")
+                .setName("Simple Facebook SDK for Android")
+                .setCaption("Code less, do the same.")
+                .setDescription("Login, publish feeds and stories, invite friends and more...")
+                .setPicture("https://raw.github.com/sromku/android-simple-facebook/master/Refs/android_facebook_sdk_logo.png")
+                .setLink("https://github.com/sromku/android-simple-facebook")
+                .build();*/
+
+
+        //publicacion de imagenes
+        Bitmap imagen = BitmapFactory.decodeResource(getResources(), R.drawable.ic_image_test);
+        Photo photo = new Photo.Builder()
+                .setImage(imagen)
+                .setName("prueba imagen")
+                .setPlace("110619208966868")
+                .build();
+
+        mSimpleFacebook.publish(photo, onPublishListener);
     }
 }

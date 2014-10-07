@@ -12,6 +12,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loginFB"
-        android:onClick="log"/>
+        android:onClick="log"
+        android:layout_alignParentLeft="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prueba POST"
+        android:onClick="pruebaPost"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Permisos"
+        android:onClick="requestPermisos"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/permisos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
