@@ -27,9 +27,11 @@ public class MainActivity extends Activity {
     public int imgID;
 
     //views
-    public TextView mTextView;
+
     public EditText mEditText;
     public WebView mWebView;
+    public ImageView mImageView;
+    public Bitmap bm;
 
     /*public ImageView mImageView;*/
 
@@ -40,8 +42,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         //mTextView = (TextView) findViewById(R.id.mTextView);
         mEditText = (EditText) findViewById(R.id.mEditText);
-       /* mWebView = (WebView) findViewById(R.id.mWebView);
-        mWebView.setWebViewClient(new WebViewClient());*/
+        mWebView = (WebView) findViewById(R.id.mWebView);
+        mWebView.setWebViewClient(new WebViewClient());
     }
 
     @Override
@@ -86,13 +88,14 @@ public class MainActivity extends Activity {
     }
 
     public void getBitmap(WebView view) {
-        Bitmap bm = Bitmap.createBitmap(view.getWidth(), view.getContentHeight(), Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bm);
+        Bitmap captura= Bitmap.createBitmap(view.getWidth(), view.getContentHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(captura);
         view.draw(c);
-        c.drawBitmap(bm, 0, 0, null);
-        openViewImage(bm);
-       /* mImageView = (ImageView) findViewById(R.id.mImageView);
-        mImageView.setImageBitmap(bm);*/
+        c.drawBitmap(captura, 0, 0, null);
+        mWebView.setVisibility(View.GONE);
+        mImageView = (ImageView) findViewById(R.id.mImageView);
+        bm = captura;
+        mImageView.setImageBitmap(bm);
     }
 
     public void cargarURL(View view) {
@@ -103,6 +106,7 @@ public class MainActivity extends Activity {
 
             public void onPageFinished(WebView view, String url) {
                 getBitmap(view);
+
             }
         });
     }
@@ -116,9 +120,9 @@ public class MainActivity extends Activity {
         this.startActivity(intent);
     }
 
-    private void openViewImage(Bitmap webImage) {
+    public void capturarWeb (MenuItem Item) {
         Intent intent = new Intent(this, view_image_activity.class);
-        intent.putExtra("webImage", webImage);
+        intent.putExtra("webImage", bm);
         this.startActivity(intent);
     }
 }
