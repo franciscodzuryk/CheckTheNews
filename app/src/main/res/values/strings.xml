@@ -22,5 +22,12 @@
 
     <!-- View Image Activity -->
     <string name="imageview_capture">Imagen tomada</string>
+    <string name="title_activity_login_fb">Login Facebook</string>
+    <string name="loginFB">Login</string>
+
+    <!-- Facebook -->
+    <string name="app_id">1482662632002146</string>
+    <string name="app_namespace">checkthenews_nsp</string>
+
 
 </resources>
