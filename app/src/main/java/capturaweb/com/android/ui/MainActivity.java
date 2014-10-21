@@ -129,8 +129,13 @@ public class MainActivity extends Activity {
     }
 
     public void openLogin(View view) {
-        Intent intent = new Intent(this, LoginFB.class);
-        this.startActivity(intent);
+        Intent i = new Intent(this, LoginFB.class);
+        this.startActivity(i);
+    }
+
+    public void openLoginTW(View view) {
+        Intent i = new Intent(this, LoginTwitter.class);
+        startActivity(i);
     }
 
     private void openViewImage() {

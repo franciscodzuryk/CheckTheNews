@@ -28,6 +28,7 @@
     <!-- Facebook -->
     <string name="app_id">1482662632002146</string>
     <string name="app_namespace">checkthenews_nsp</string>
-
+    <string name="title_activity_login_tw">LoginTW</string>
+    <string name="title_activity_login_twitter">LoginTwitter</string>
 
 </resources>
