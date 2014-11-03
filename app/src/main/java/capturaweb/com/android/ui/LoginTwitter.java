@@ -291,7 +291,7 @@ public class LoginTwitter extends Activity {
                 builder.setOAuthConsumerKey(TWITTER_CONSUMER_KEY);
                 builder.setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET);
 
-                // Access Token 
+                // Access Token
                 String access_token = mSharedPreferences.getString(PREF_KEY_OAUTH_TOKEN, "");
                 // Access Token Secret
                 String access_token_secret = mSharedPreferences.getString(PREF_KEY_OAUTH_SECRET, "");
